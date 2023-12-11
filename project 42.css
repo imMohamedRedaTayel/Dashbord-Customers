@@ -1,0 +1,528 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body
+{
+    overflow-x: hidden;
+}
+.container
+{
+    position: relative;
+    width: 100%;
+}
+.nav
+{
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: #03a9f4;
+    transition: 0.5s;
+    overflow: hidden;
+}
+.nav.active
+{
+    width: 60px;
+}
+.nav ul
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.nav ul li 
+{
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30PX;
+    border-bottom-left-radius: 30PX;
+}
+
+
+/* curve outside */
+.nav ul li:hover a::before 
+{
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px #fff;
+    pointer-events: none;
+}
+
+.nav ul li:hover a::after 
+{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px #fff;
+    pointer-events: none;
+}
+
+.nav ul li:hover a
+{
+    background: #fff;
+    color: #03a9f4;
+} 
+
+.nav ul li:nth-child(1)
+{
+    margin-bottom: 20px;
+}
+.nav ul li:nth-child(1):hover
+{
+    background: transparent;
+} 
+.nav ul li a 
+{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: #fff;
+}
+.nav ul li a .icon
+{
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    padding: 20px;
+}
+.nav ul li a .icon .fa
+{
+    color: #fff;
+    font-size: 24px;
+}
+.nav ul li a:hover .icon .fa
+{
+    color: #1795ce;
+    /* font-size: 24px; */
+}
+.nav ul li a .title
+{
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    white-space: nowrap;
+}
+.main
+{
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background: #f5f5f5;
+    transition: 0.5s;
+}
+.main.active 
+{
+    width: calc(100% - 60px);
+    left: 60px;
+}
+.main .topbar
+{
+    width: 100%;
+    background: #fff;
+    height: 60px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.toggle
+{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+.toggle::before
+{
+    content: '\f0c9';
+    font-family: fontAwesome;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    line-height: 60px;
+    font-size: 24px;
+    text-align: center;
+    color: #111;
+}
+.search
+{
+    position: relative;
+    width: 400px;
+    margin: 0 10px;
+}
+.search label
+{
+    position: relative;
+    width: 100%;
+}
+.search label input
+{
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    outline: none;
+    border: 1px soid rgba(0, 0, 0, 0.2);
+}
+.search label .fa
+{
+    position: absolute;
+    left: 15px;
+    top: 4px;
+}
+.user
+{
+    position: relative;
+    min-width: 50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+.user img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.carBox
+{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 20px;
+}
+.carBox .card
+{
+    position: relative;
+    background: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.carBox .card:hover
+{
+    background: #03a9f4;
+}
+.carBox .card:hover .numbers,
+.carBox .card:hover .cardName,
+.carBox .card:hover .iconBox
+{
+    color: #fff;
+}
+
+.carBox .card .numbers
+{
+    position: relative;
+    font-size: 2em;
+    font-weight: 500;
+}
+.carBox .card .cardName
+{
+    color: #999;
+}
+.carBox .card .iconBox
+{
+    font-size: 2.5em;
+    color: #03a9f4;
+}
+
+/* Charts */
+
+.graphBox
+{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 30px;
+    min-height: 200px;
+}
+.graphBox .box
+{
+    position: relative;
+    background: #fff;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+}
+
+.details
+{
+    position: relative;
+    width: 100%;
+    padding-top: 0;
+    padding: 20px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 2fr 1fr;
+}
+.details .new1
+{
+    position: relative;
+    /* display: grid; */
+    min-height: 530px;
+    background: #fff;
+    padding: 20px;
+}
+.cardHeader
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.cardHeader h2
+{
+    font-weight: 600;
+}
+.btn
+{
+    position: relative;
+    padding: 5px 10px;
+    background: #03a9f4;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+}
+.details table
+{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+.details table thead td
+{
+    font-weight: 600;
+}
+.details .new1 table tr
+{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.644);
+}
+.details .new1 table tbody tr:last-child
+{
+    border-bottom: none;
+}
+.details .new1 table tbody tr:hover
+{
+    background: #03a9f4;
+    color: #fff;
+}
+.details .new1 table tr td
+{
+    padding: 9px 5px;
+}
+.details .new1 table thead tr td:last-child,
+.details .new1 table tbody tr td:last-child
+{
+    text-align: right;
+}
+.details .new1 table thead tr td:nth-child(2),
+.details .new1 table tbody tr td:nth-child(2)
+{
+    text-align: right;
+    padding-right: 20px;
+}
+.details .new1 table thead tr td:nth-child(3),
+.details .new1 table tbody tr td:nth-child(3)
+{
+    text-align: center;
+}
+.status
+{
+    position: relative;
+    padding: 2px 4px;
+    background: #f00;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+.delivered
+{
+    background: #8de02c;
+}
+.pending
+{
+    background: #f9ca3f;
+}
+.return
+{
+    background: #f00;
+}
+.inprogress
+{
+    background: #1795ce;
+}
+.details .new2
+{
+    position: relative;
+    /* display: grid; */
+    min-height: 530px;
+    background: #fff;
+    padding: 20px;
+}
+.details .new2 .imgBx
+{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.details .new2 .imgBx img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.details .new2 table tr:hover,
+.details .new2 table tr:hover td h4 span
+{
+    background: #03a9f4;
+    color: #fff;
+}
+.details .new2 table tr td 
+{
+    padding: 7px 10px;
+}
+.details .new2 table tr td h4
+{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2em;
+}
+.details .new2 table tr td h4 span
+{
+    font-size: 14px;
+    color: #999;
+}
+@media (max-width: 992px)
+{
+    .graphBox
+    {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    .nav
+    {
+        left: -300px;
+    }    
+    .nav.active
+    {
+        left: 0;
+        width: 300px;
+    }
+    .main
+    {
+        width: 100%;
+        left: 0;
+    }
+    .main.active
+    {
+        width: calc(100% - 300px);
+        left: 300px;
+    }
+    .carBox
+    {
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+
+@media (max-width: 768px)
+{
+    .details
+    {
+        grid-template-columns: repeat(1,1fr);
+    }
+    .cardHeader
+    {
+        font-weight: 600;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px)
+{
+    .carBox
+    {
+        grid-template-columns: repeat(1.1fr);
+    }
+    .details .new1
+    {
+        overflow-x: auto;
+    }
+    .details .new1 table 
+    {
+        width: 600px;
+    }
+    .nav
+    {
+        width: 100%;
+        left: -100%;
+        z-index: 1000   ;
+    }
+    .nav.active
+    {
+        width: 100%;
+        left: 0;
+    }
+    /* .toggle
+    {
+        z-index: 1000000;
+    } */
+    .toggle.active 
+    {
+        position: fixed;
+        z-index: 100000;
+        right: 0;
+        left: initial;
+    }
+    .toggle.active::before
+    {
+        color: #fff;
+    }
+    .main,
+    .main.active
+    {
+        width: 100%;
+        left: 0;
+    }
+}
